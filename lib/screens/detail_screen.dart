@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:hyflutter/models/book.dart';
 
 class DetailScreen extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String description;
-  final String image;
+  final Book book;
   DetailScreen({
-    required this.title,
-    required this.subtitle,
-    required this.description,
-    required this.image,
+    required this.book,
   });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Node.js 프로젝트 투입 일주일 전'),
+        title: Text(book.title),
       ),
       body: Column(
         children: [
-          Image.network(image),
+          Image.network(book.image),
           Padding(padding: EdgeInsets.all(3)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +28,7 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        title,
+                        book.title,
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -41,7 +36,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      subtitle,
+                      book.subtitle,
                       style: TextStyle(fontSize: 18, color: Colors.grey),
                     ),
                   ],
@@ -103,7 +98,7 @@ class DetailScreen extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.all(15),
-            child: Text(description),
+            child: Text(book.description),
           )
         ],
       ),
