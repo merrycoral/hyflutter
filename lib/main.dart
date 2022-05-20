@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hyflutter/screens/list_screen.dart';
-import 'package:hyflutter/screens/detail_screen.dart';
+import 'package:hyflutter/screens/timer_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Book List APP',
+      title: 'timer APP',
       //home: DetailScreen(),
-      home: ListScreen(),
+      home: TimerScreen(),
     );
   }
 }
