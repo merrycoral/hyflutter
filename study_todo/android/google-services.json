@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "812927218789",
+    "project_id": "flutter-data-firebase-9034d",
+    "storage_bucket": "flutter-data-firebase-9034d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812927218789:android:89185eca64943315cb028c",
+        "android_client_info": {
+          "package_name": "com.example.study_todo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812927218789-qt29ju2ukcd7psv873gbd3eftbsdq0mr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB59h5h4ME8BKGZOuxX9WtbOZCIibLuem4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812927218789-qt29ju2ukcd7psv873gbd3eftbsdq0mr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "812927218789-54ie7hk2br92k2sitve2tr331rst8qql.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.studyTodo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
