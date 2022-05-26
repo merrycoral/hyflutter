@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:study_json/Post.dart';
+import 'package:study_json/myhttp.dart';
 import 'dart:convert';
 import '/user.dart';
+
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'studyHttpJson',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      home: JSONTest(),
+      home: MyHttp(),
+      //home: JSONTest(),
     );
   }
 }
@@ -43,5 +47,18 @@ class JSONTest extends StatelessWidget {
           ]
       ),
     );
+  }
+}
+
+Future<List<Post>> fetchPost() async {
+  final response =
+      await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+
+  if (response.statusCode == 200) {
+    List list = jsonDecode(response.body);
+    var postList = list.map((element) => Post.fromJson(element)).toList();
+    return postList;
+  } else {
+    throw Exception('Failed to load post');
   }
 }
