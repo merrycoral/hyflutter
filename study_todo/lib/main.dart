@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study_todo/screens/list_screen.dart';
 import 'package:study_todo/screens/login_screen.dart';
 import 'package:study_todo/screens/splash_screen.dart';
+import 'dart:convert';
 
 
 void main() => runApp(MyApp());
@@ -15,8 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'timer APP',
       //home: DetailScreen(),
-      home: SplashScreen(),
+      //home: SplashScreen(),
+      home: JSONTest()
     );
   }
 }
+
 
