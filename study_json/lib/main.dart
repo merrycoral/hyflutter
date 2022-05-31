@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_json/Post.dart';
+import 'package:study_json/post.dart';
 import 'package:study_json/myhttp.dart';
 import 'dart:convert';
 import '/user.dart';
@@ -10,9 +10,23 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+
+class _MyAppState extends State<MyApp> {
+  Future<List<Post>>? postList;
+  Future<Post>? post;
+
+  @override
+  void initState() {
+    super.initState();
+    postList = fetchPost();
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -21,7 +35,34 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHttp(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('HTTP GET'),
+        ),
+        body: Center(
+          child: FutureBuilder<List<Post>>(
+            future: postList,
+            builder: (context, snapshot){
+              if(snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: snapshot.data?.length,
+                    itemBuilder: (context, index){
+                      Post post = snapshot.data[index];
+                      return Card(
+                        child: ListTile(
+                          title: Text(post.title),
+                        ),
+                      );
+                    });
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            }
+          ),
+        ),
+      )
+      // MyHttp(),
       //home: JSONTest(),
     );
   }
@@ -58,6 +99,7 @@ Future<List<Post>> fetchPost() async {
     List list = jsonDecode(response.body);
     var postList = list.map((element) => Post.fromJson(element)).toList();
     return postList;
+    //return Post.fromJson(json.decode(response.body));
   } else {
     throw Exception('Failed to load post');
   }
